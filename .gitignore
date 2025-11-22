@@ -1,0 +1,64 @@
+# =============== Unity ===============
+
+# Ignore generated Unity folders
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+[Bb]uilds/
+[Oo]bj/
+[Bb]in/
+Logs/
+UserSettings/
+
+# Ignore IDE caches
+.vs/
+*.csproj
+*.sln
+*.user
+*.unityproj
+
+# Ignore build artifacts
+sysinfo.txt
+*.apk
+*.aab
+*.app
+*.ipa
+*.exe
+*.dll
+*.pdb
+
+# Ignore Unity auto-generated files
+*.pidb
+*.booproj
+*.svd
+*.rsp
+*.mdb
+
+# Ignore crash reports
+*.stacktrace
+
+# Ignore generated meta files (but keep actual .meta!)
+# --- DO NOT ADD *.meta -- Unity needs them ---
+
+# Ignore addressables build data
+Library/com.unity.addressables
+Assets/AddressableAssetsData/*/Build*
+Assets/AddressableAssetsData/*/BuildLogs
+
+# Packages cache
+Packages/com.unity.package-manager-ui
+*/.package_cache/
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# Visual Studio Code
+.vscode/
+
+# Mac / Windows junk
+.DS_Store
+Thumbs.db
+
+# Auto-generated streaming assets
+Assets/StreamingAssets/aa/
