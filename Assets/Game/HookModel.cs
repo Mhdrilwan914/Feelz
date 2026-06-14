@@ -8,16 +8,15 @@ namespace Assets.Game
         private readonly Stack<KeyModel> _keys;
 
         public int Capacity { get; }
+        public int Count => _keys?.Count ?? 0;
 
-        public int Count => _keys.Count;
 
-        public bool IsEmpty => _keys.Count == 0;
+        public bool IsEmpty => _keys?.Count == 0;
+        public bool IsFull => _keys?.Count >= Capacity;
+        public bool HasSpace => _keys?.Count < Capacity;
 
-        public bool IsFull => _keys.Count >= Capacity;
 
-        public bool HasSpace => _keys.Count < Capacity;
-
-        public KeyModel TopKey => IsEmpty ? null : _keys.Peek();
+        public KeyModel TopKey => IsEmpty ? null : _keys?.Peek();
 
         public IReadOnlyCollection<KeyModel> Keys => _keys;
 
@@ -27,19 +26,24 @@ namespace Assets.Game
             _keys = new Stack<KeyModel>();
         }
 
-        public void Push(KeyModel key)
+        public void TryPush(KeyModel key)
         {
-            _keys.Push(key);
+            if (HasSpace)
+            {
+                _keys?.Push(key);
+            }
         }
 
-        public KeyModel Pop()
+        public KeyModel TryPop()
         {
-            return _keys.Pop();
+            if (IsEmpty) return null;
+            KeyModel key = _keys?.Pop();
+            return key;
         }
 
         public bool IsUniform()
         {
-            if (_keys.Count == 0)
+            if (_keys?.Count == 0)
                 return false;
 
             KeyColorEnum firstColor = _keys.Peek().Color;

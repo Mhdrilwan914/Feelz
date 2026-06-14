@@ -13,7 +13,7 @@ namespace Assets.Game
             Id = id;
             Color = keyColor;
         }
-        
+
         public override string ToString()
         {
             return $"KeyModel: Id={Id}, KeyColor={Color}";
