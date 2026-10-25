@@ -14,12 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: SparkShotScene
   m_GUID: fa6b89f9bac6fdf459a8085d49e0279c
-  m_SerializeEntries:
-  - m_GUID: 373fbfdd1d401ab408ed3cb9e2726e65
-    m_Address: ClayPlate
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 65999089ecb4c7041a70a771fa86095f, type: 2}
   m_SchemaSet:

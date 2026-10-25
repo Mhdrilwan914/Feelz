@@ -13,6 +13,7 @@ namespace SauceSort.Gameplay
         private BottleController _selectedSource;
         [SerializeField] private BottlePourAnimator _pourAnimator;
         private bool _inputLocked;
+        private bool _inputEnabled = true;
 
         public event Action ValidPourPresentationCompleted;
 
@@ -29,9 +30,9 @@ namespace SauceSort.Gameplay
             }
         }
 
-public void HandleBottleSelection(BottleController clickedBottle)
+        public void HandleBottleSelection(BottleController clickedBottle)
         {
-            if (_inputLocked || clickedBottle == null || clickedBottle.State == null)
+            if (!_inputEnabled || _inputLocked || clickedBottle == null || clickedBottle.State == null)
             {
                 return;
             }
@@ -108,10 +109,9 @@ public void HandleBottleSelection(BottleController clickedBottle)
         }
     
 
-private static bool ApplyPour(BottleController source, BottleController destination)
+        private static bool ApplyPour(BottleController source, BottleController destination)
         {
-            int movedLayers;
-            if (!source.TryPourTo(destination, out movedLayers))
+            if (!source.TryPourTo(destination))
             {
                 return false;
             }
@@ -122,12 +122,21 @@ private static bool ApplyPour(BottleController source, BottleController destinat
         }
 
 
-public void CancelSelection()
+        public void CancelSelection()
         {
             if (!_inputLocked)
             {
                 ClearSelection();
             }
         }
-}
+
+        public void SetInputEnabled(bool enabled)
+        {
+            _inputEnabled = enabled;
+            if (!enabled && !_inputLocked)
+            {
+                ClearSelection();
+            }
+        }
+    }
 }

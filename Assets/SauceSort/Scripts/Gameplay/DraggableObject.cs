@@ -24,9 +24,7 @@ namespace SauceSort.Gameplay
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            _eventCamera = eventData.pressEventCamera != null
-                ? eventData.pressEventCamera
-                : Camera.main;
+            _eventCamera = eventData.pressEventCamera != null ? eventData.pressEventCamera : Camera.main;
 
             if (_eventCamera == null)
             {
@@ -83,8 +81,7 @@ namespace SauceSort.Gameplay
 
         private Vector3 PointerToWorldPosition(Vector2 screenPosition)
         {
-            return _eventCamera.ScreenToWorldPoint(
-                new Vector3(screenPosition.x, screenPosition.y, _screenDepth));
+            return _eventCamera.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, _screenDepth));
         }
     }
 }

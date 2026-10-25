@@ -229,6 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 223096233}
+  - component: {fileID: 223096234}
   m_Layer: 0
   m_Name: ConveyorArea
   m_TagString: Untagged
@@ -251,6 +252,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 411965819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &223096234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223096232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8ae60a36799bf4c94dff37f931d66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SauceSort.Gameplay.ConveyorController
+  _beltCenterY: -4.1
+  _bottleParkY: -3
+  _slotSpacing: 1.55
+  _travelDuration: 0.55
+  _parkedScale: 0.78
+  _beltWidth: 8.5
 --- !u!134 &332856212
 PhysicsMaterial:
   m_ObjectHideFlags: 0
@@ -536,8 +555,8 @@ Camera:
   m_GameObject: {fileID: 1003809351}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.049839795, g: 0.14785805, b: 0.3018868, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -674,17 +693,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe45265898db09a469e6b2dd3f5652a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SauceSort.Gameplay.BottlePourAnimator
-  _tiltDegrees: 24
-  _tiltDuration: 0.18
   _approachDuration: 0.16
+  _tiltDuration: 0.18
   _returnDuration: 0.16
+  _tiltDegrees: 24
   _destinationClearance: 0.1
-  _invalidShakeDuration: 0.2
-  _invalidShakeDistance: 0.08
   _pourDuration: 0.32
-  _settleDuration: 0.12
   _pourArcHeight: 0.45
   _settleScale: 1.04
+  _settleDuration: 0.12
+  _shakeDuration: 0.2
+  _shakeDistance: 0.08
 --- !u!114 &1032230648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +725,12 @@ MonoBehaviour:
   - {fileID: 1446920774}
   _selectionController: {fileID: 1032230646}
   _bottleSpacing: 1.6
+  _bottleRowSpacing: 4.8
+  _portraitGridAspect: 0.65
+  _layoutPadding: 0.8
+  _conveyor: {fileID: 0}
   _bottleRowY: 5
+  _levelAdvanceDelay: 1.5
 --- !u!1001 &1155375709
 PrefabInstance:
   m_ObjectHideFlags: 0

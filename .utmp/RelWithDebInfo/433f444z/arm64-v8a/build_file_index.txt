@@ -1,0 +1,2 @@
+C:\Users\mhdri\Saved Games\Feelz Games\Feelz\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\mhdri\Saved Games\Feelz Games\Feelz\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\CMakeLists.txt

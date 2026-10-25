@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SauceSort.Core;
+using UnityEngine;
 
 namespace Assets.SauceSort.Scripts.Core
 {
@@ -13,7 +14,7 @@ namespace Assets.SauceSort.Scripts.Core
     {
         public const int Capacity = 4;
 
-        private readonly List<SauceType> layers = new List<SauceType>(Capacity);
+        private readonly List<SauceType> layers = new(Capacity);
         private readonly ReadOnlyCollection<SauceType> readOnlyLayers;
 
         public BottleState()
@@ -111,12 +112,8 @@ namespace Assets.SauceSort.Scripts.Core
             {
                 return false;
             }
+            return true;
 
-            int incomingGroupSize = source.CountTopGroup();
-            int availableSpace = Capacity - layers.Count;
-
-            // A pour moves the entire contiguous group; it never splits it.
-            return incomingGroupSize <= availableSpace;
         }
 
         /// <summary>Returns true when this bottle can pour its top group to destination.</summary>
@@ -136,8 +133,8 @@ namespace Assets.SauceSort.Scripts.Core
             {
                 return false;
             }
-
-            pouredLayers = CountTopGroup();
+            Debug.Log($"Capacity: {CountTopGroup()}, Available space: {Capacity - destination.layers.Count}");
+            pouredLayers = Math.Min(CountTopGroup(), Capacity - destination.layers.Count);
             int firstMovedLayer = layers.Count - pouredLayers;
 
             for (int i = firstMovedLayer; i < layers.Count; i++)
@@ -149,7 +146,7 @@ namespace Assets.SauceSort.Scripts.Core
             return true;
         }
 
-        private static bool IsStorableSauce(SauceType sauce)
+        private bool IsStorableSauce(SauceType sauce)
         {
             return sauce == SauceType.Red
                 || sauce == SauceType.Blue

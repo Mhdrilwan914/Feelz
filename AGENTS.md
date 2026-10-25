@@ -37,13 +37,25 @@ If requirements are ambiguous and the decision could cause destructive or archit
 - Use clear and meaningful names.
 - Classes and public methods use PascalCase.
 - Local variables and parameters use camelCase.
-- Follow the existing project's private-field naming convention. If no convention exists, prefer `_camelCase`.
-- Prefer private fields with `[SerializeField]` for Inspector configuration.
+- Follow the existing project's private-field naming convention. If no convention exists, prefer _camelCase.
+- Prefer private fields with [SerializeField] for Inspector configuration.
 - Avoid public fields unless they are intentionally part of an API.
-- Avoid magic numbers. Use constants or serialized configuration where appropriate.
+- Never use unexplained magic numbers in code. Replace hard-coded numeric values with clearly named constants, variables, or serialized fields, depending on their purpose.
+- Every numeric value used for gameplay logic, calculations, timing, movement, animation, UI layout, thresholds, limits, or configuration must have a meaningful, self-explanatory name. 
+- The name must clearly communicate what the value represents.
+- Prefer const for fixed compile-time values, static readonly for fixed values initialized at runtime, local variables for temporary calculations, and [SerializeField] private fields for values that need Inspector configuration.
+- Use names that describe the purpose and unit of a value where applicable. For example, prefer pourDurationSeconds, maximumBottleCapacity, shakeIntensity, moveSpeed, and minimumMatchingLayerCount over duration, value, or temp.
+- Do not replace magic numbers with generic variable names such as num, value, temp, or amount when a more descriptive name is possible.
+- Avoid repeating the same numeric value across multiple locations. Reuse the appropriate named constant, variable, or configuration field when the values represent the same concept.
+- Do not introduce unnecessary variables for values that are self-explanatory by their context, such as index++, array indices, loop counters, or standard mathematical expressions. However, extract meaningful domain-specific values when doing so improves readability.
+- Do not create constants for every number indiscriminately. Numeric values that are inherently meaningful and unambiguous in context, such as 0 for an initial index or 1 for a simple increment, may remain inline when extracting them would reduce readability.
+- Follow existing project naming conventions and architecture when introducing constants, variables, or serialized fields.
+- Avoid magic strings as well. Extract repeated or important string values into appropriately named constants when beneficial.
 - Keep methods focused and reasonably small.
 - Remove unused variables, methods, and imports when making related changes.
 - Do not introduce unnecessary abstraction.
+- When modifying existing code, replace relevant magic numbers in the affected code rather than leaving unexplained numeric values behind.
+- After implementation, review the changed code to ensure numeric values are appropriately named, their purposes are clear, and no unnecessary abstractions were introduced.
 
 ## 5. Architecture
 
